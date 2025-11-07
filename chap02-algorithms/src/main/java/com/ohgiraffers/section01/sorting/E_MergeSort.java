@@ -1,5 +1,7 @@
 package com.ohgiraffers.section01.sorting;
 
+import java.util.Arrays;
+
 /* 병합 정렬
  * 분할 정복(Divide and Conquer) 방식으로 배열을 반씩 나누어 정렬한 후 병합(Merge)하는 방식이다.
  * 정렬 된 두 개의 배열을 합치는 과정에서 안정 정렬(Stable Sort)의 특성을 유지할 수 있다.
@@ -12,5 +14,18 @@ public class E_MergeSort {
 
     public static void solution(int[] arr){
 
+        System.out.println("원본 배열 : " + Arrays.toString(arr));
+        int[] temp = new int[arr.length];   // 추가 메모리 공간
+        mergeSort(arr, temp, 0, arr.length - 1);
+        System.out.println("정렬된 배열 : " + Arrays.toString(arr));
+
+    }
+
+    private static void mergeSort(int[] arr, int[] temp, int left, int right) {
+        if(left< right) {
+            int mid = (left + right) / 2;
+            mergeSort(arr, temp, left, mid);
+            mergeSort(arr, temp, mid + 1, right);
+        }
     }
 }
